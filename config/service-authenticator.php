@@ -19,5 +19,5 @@ return [
    | Put in the name of this service
    |
    */
-    'base_url' => 'http://nstack.local-like.st',
+    'base_url' => config('app.url'),
 ];
