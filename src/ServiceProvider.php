@@ -3,7 +3,8 @@
 namespace Nodes\ServiceAuthenticator;
 
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
-use Nodes\ServiceAuthenticator\Console\Commands\Handshake;
+use Nodes\ServiceAuthenticator\Console\Commands\CreateClient;
+use Nodes\ServiceAuthenticator\Console\Commands\RefreshClients;
 
 /**
  * Class ServiceProvider
@@ -28,7 +29,8 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     public function register()
     {
-        $this->commands(Handshake::class);
+        $this->commands(CreateClient::class);
+        $this->commands(RefreshClients::class);
 
         // Figure out how routes we can register the route
 //        include $itemPath;

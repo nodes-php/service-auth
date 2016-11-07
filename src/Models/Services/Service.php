@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Nodes\ServiceAuthenticator\Models\Services;
 
 use Nodes\Database\Eloquent\Model as NodesModel;
+use Nodes\ServiceAuthenticator\Exceptions\ServiceIsNotClientException;
 
 /**
  * Class Service
@@ -71,16 +72,31 @@ class Service extends NodesModel
     }
 
     /**
-     * resetThisToken
+     * guardClient
+     *
+     * @author Casper Rasmussen <cr@nodes.dk>
+     * @access public
+     * @return void
+     * @throws \Nodes\ServiceAuthenticator\Exceptions\ServiceIsNotClientException
+     */
+    public function guardClient()
+    {
+        if (!$this->isClient()) {
+            throw new ServiceIsNotClientException($this);
+        }
+    }
+
+    /**
+     * refresh
      *
      * @author Casper Rasmussen <cr@nodes.dk>
      * @access public
      * @return void
      */
-    public function resetThisToken()
+    public function refresh()
     {
         $this->update([
-            'this_token' => str_random(36),
+            'token' => str_random(36),
         ]);
     }
 }

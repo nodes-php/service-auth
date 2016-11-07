@@ -44,6 +44,7 @@ class ServicesController extends Controller
             ]);
         } catch (EntityNotFoundException $e) {
             $serviceRepository->create([
+                'slug'     => $slug,
                 'token'    => $token,
                 'base_url' => $baseUrl,
                 'type'     => Service::TYPE_SERVER,

@@ -7,28 +7,26 @@ use Illuminate\Console\Command;
 use Nodes\ServiceAuthenticator\Models\Services\Service;
 use Nodes\ServiceAuthenticator\Models\Services\ServiceRepository;
 
-class Handshake extends Command
+class RefreshClients extends Command
 {
-    protected $signature = 'service-auth:handshake';
+    protected $signature = 'service-auth:clients:refresh';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Handshake with all services';
+    protected $description = 'Refresh all clients';
 
     public function handle(ServiceRepository $serviceRepository)
     {
-        $this->info('Started ' . __CLASS__);
+        $this->info('Started refresh clients');
 
-        foreach($serviceRepository->get() as $service) {
+        foreach ($serviceRepository->getClients() as $service) {
             /** @var $service Service */
-            $serviceRepository->handshake($service);
+            $this->info(sprintf('Refreshing ' . $service->slug));
 
-
+            $serviceRepository->refresh($service);
         }
-
-        $this->info('Finished ' . __CLASS__);
     }
 }

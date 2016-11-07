@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Nodes\ServiceAuthenticator\Models\Services;
 
 use GuzzleHttp\Client;
+use Illuminate\Database\Eloquent\Collection;
 use Nodes\Database\Eloquent\Repository as NodesRepository;
 
 /**
@@ -26,27 +27,40 @@ class ServiceRepository extends NodesRepository
         $this->setupRepository($model);
     }
 
-    public function handshake(Service $service)
+    /**
+     * getClients
+     *
+     * @author Casper Rasmussen <cr@nodes.dk>
+     * @access public
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getClients() : Collection
     {
-        $service->resetThisToken();
+        return $this->where('type', Service::TYPE_CLIENT)->get();
+    }
+
+    /**
+     * refresh
+     *
+     * @author Casper Rasmussen <cr@nodes.dk>
+     * @access public
+     * @param \Nodes\ServiceAuthenticator\Models\Services\Service $service
+     * @return void
+     */
+    public function refresh(Service $service)
+    {
+        $service->guardClient();
 
         $slash = ends_with($service->base_url, '/') ? '' : '/';
 
-        $url = $service->base_url . $slash . 'service-authenticaor/handshake';
+        $url = $service->base_url . $slash . 'service-authenticator/services/refresh';
 
-        $reponse = (new Client())->post($url, [
+        (new Client())->post($url, [
             'form_params' => [
-                'this_token' => $service->this_token,
-                'that_token' => $service->that_token,
-                'slug'  => $service->slug,
+                'token'    => $service->token,
+                'base_url' => config('nodes.service-authenticator.base_url'),
+                'slug'     => config('nodes.service-authenticator.slug'),
             ],
         ]);
-        $body = json_decode($reponse->getBody()->getContents(), true);
-
-        $service->update([
-            'that_token' => $body['token'],
-        ]);
-
-        dd($service);
     }
 }
