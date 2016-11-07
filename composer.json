@@ -1,0 +1,29 @@
+{
+    "name": "nodes/service-auth",
+    "description": "Authenticate between services",
+    "keywords": [
+        "nodes",
+        "service",
+        "auth",
+    ],
+    "license": "MIT",
+    "homepage": "http://nodesagency.com",
+    "authors": [
+        {
+            "name": "Casper Rasmussen",
+            "email": "cr@nodes.dk",
+            "role": "CTO"
+        }
+    ],
+    "require": {
+        "nodes/core": "~1.0",
+    },
+    "autoload": {
+        "psr-4": {
+            "Nodes\\ServiceAuthenticator\\": "src/"
+        },
+        "files": [
+
+        ]
+    }
+}
