@@ -7,6 +7,7 @@ namespace Nodes\ServiceAuthenticator\Models\Services;
 use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Collection;
 use Nodes\Database\Eloquent\Repository as NodesRepository;
+use Nodes\Database\Exceptions\EntityNotFoundException;
 
 /**
  * Class ServiceRepository
@@ -62,5 +63,28 @@ class ServiceRepository extends NodesRepository
                 'slug'     => config('nodes.service-authenticator.slug'),
             ],
         ]);
+    }
+
+    /**
+     * getClientByTokenOrFail
+     *
+     * @author Casper Rasmussen <cr@nodes.dk>
+     * @access public
+     * @param string $token
+     * @return \Nodes\ServiceAuthenticator\Models\Services\Service
+     */
+    public function getClientByTokenOrFail(string $token) : Service
+    {
+        return cache_remember('nodes.authentication.clientByToken', ['token' => $token], null,
+            function () use ($token) {
+                $service = $this->where('type', Service::TYPE_CLIENT)->where('token', $token)->first();
+
+                if (!$service) {
+                    throw new EntityNotFoundException(sprintf('Service with type [client] with token [%s] was not found',
+                        $token));
+                }
+
+                return $service;
+            });
     }
 }
