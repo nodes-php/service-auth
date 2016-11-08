@@ -5,17 +5,15 @@ namespace Nodes\ServiceAuthenticator\Exceptions;
 use Nodes\Exceptions\Exception;
 
 /**
- * Class PreConditionFailedException
- *
- * @package Nodes\ServiceAuthenticator\Exceptions
+ * Class PreConditionFailedException.
  */
 class PreConditionFailedException extends Exception
 {
     /**
-     * ServiceIsNotClientException constructor
+     * ServiceIsNotClientException constructor.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @param string $message
      */
     public function __construct(string $message)

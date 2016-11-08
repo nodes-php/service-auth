@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Nodes\ServiceAuthenticator\Models\Services;
 
@@ -10,17 +10,15 @@ use Nodes\Database\Eloquent\Repository as NodesRepository;
 use Nodes\Database\Exceptions\EntityNotFoundException;
 
 /**
- * Class ServiceRepository
- *
- * @package Nodes\ServiceAuthenticator\Models\Services
+ * Class ServiceRepository.
  */
 class ServiceRepository extends NodesRepository
 {
     /**
-     * ServiceRepository constructor
+     * ServiceRepository constructor.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @param \Nodes\ServiceAuthenticator\Models\Services\Service $model
      */
     public function __construct(Service $model)
@@ -29,10 +27,10 @@ class ServiceRepository extends NodesRepository
     }
 
     /**
-     * getClients
+     * getClients.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getClients() : Collection
@@ -41,11 +39,12 @@ class ServiceRepository extends NodesRepository
     }
 
     /**
-     * refresh
+     * refresh.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @param \Nodes\ServiceAuthenticator\Models\Services\Service $service
+     *
      * @return void
      */
     public function refresh(Service $service)
@@ -54,7 +53,7 @@ class ServiceRepository extends NodesRepository
 
         $slash = ends_with($service->base_url, '/') ? '' : '/';
 
-        $url = $service->base_url . $slash . 'service-authenticator/services/refresh';
+        $url = $service->base_url.$slash.'service-authenticator/services/refresh';
 
         (new Client())->post($url, [
             'form_params' => [
@@ -66,11 +65,12 @@ class ServiceRepository extends NodesRepository
     }
 
     /**
-     * getClientByTokenOrFail
+     * getClientByTokenOrFail.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @param string $token
+     *
      * @return \Nodes\ServiceAuthenticator\Models\Services\Service
      */
     public function getClientByTokenOrFail(string $token) : Service

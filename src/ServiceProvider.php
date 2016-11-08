@@ -7,9 +7,7 @@ use Nodes\ServiceAuthenticator\Console\Commands\CreateClient;
 use Nodes\ServiceAuthenticator\Console\Commands\RefreshClients;
 
 /**
- * Class ServiceProvider
- *
- * @package Nodes\ServiceAuthenticator
+ * Class ServiceProvider.
  */
 class ServiceProvider extends IlluminateServiceProvider
 {
@@ -22,17 +20,17 @@ class ServiceProvider extends IlluminateServiceProvider
     {
         // Config files
         $this->publishes([
-            __DIR__ . '/../config/service-authenticator.php' => config_path('nodes/service-authenticator.php'),
+            __DIR__.'/../config/service-authenticator.php' => config_path('nodes/service-authenticator.php'),
         ], 'config');
 
         // Route files
         $this->publishes([
-            __DIR__ . '/../routes' => base_path('project/Routes/ServiceAuthenticator'),
+            __DIR__.'/../routes' => base_path('project/Routes/ServiceAuthenticator'),
         ], 'routes');
 
         // Migrations
         $this->publishes([
-            __DIR__ . '/../database/migrations' => base_path('database/migrations'),
+            __DIR__.'/../database/migrations' => base_path('database/migrations'),
         ], 'routes');
     }
 

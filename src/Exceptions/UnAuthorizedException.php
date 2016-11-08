@@ -5,17 +5,15 @@ namespace Nodes\ServiceAuthenticator\Exceptions;
 use Nodes\Exceptions\Exception;
 
 /**
- * Class UnAuthorizedException
- *
- * @package Nodes\ServiceAuthenticator\Exceptions
+ * Class UnAuthorizedException.
  */
 class UnAuthorizedException extends Exception
 {
     /**
-     * UnAuthorizedException constructor
+     * UnAuthorizedException constructor.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @param string $message
      */
     public function __construct(string $message)
