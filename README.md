@@ -14,11 +14,7 @@ A Push manager to send push messages to mobile devices from your project.
 
 ## 📝 Introduction
 
-At [Nodes](http://nodesagency.com) we send a lot of push messages from our mobile API's.
-
-Therefore we've created a push manager, which makes the job a lot easier
-
-- [Urban Airship](http://urbanairship.com)
+At [Nodes](http://nodesagency.com)
 
 ## 📦 Installation
 
