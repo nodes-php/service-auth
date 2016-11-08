@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Nodes\ServiceAuthenticator\Http\Middleware;
 
@@ -10,22 +10,22 @@ use Nodes\ServiceAuthenticator\Exceptions\UnAuthorizedException;
 use Nodes\ServiceAuthenticator\Models\Services\ServiceRepository;
 
 /**
- * Class Authenticate
- *
- * @package Nodes\ServiceAuthenticator\Http\Middleware
+ * Class Authenticate.
  */
 class Authenticate
 {
     /**
-     * handle
+     * handle.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @param          $request
      * @param \Closure $next
      * @param null     $guard
-     * @return mixed
+     *
      * @throws \Nodes\ServiceAuthenticator\Exceptions\UnAuthorizedException
+     *
+     * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
     {

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Nodes\ServiceAuthenticator\Models\Services;
 
@@ -8,9 +8,7 @@ use Nodes\Database\Eloquent\Model as NodesModel;
 use Nodes\ServiceAuthenticator\Exceptions\ServiceIsNotClientException;
 
 /**
- * Class Service
- *
- * @package Nodes\ServiceAuthenticator\Models\Services
+ * Class Service.
  */
 class Service extends NodesModel
 {
@@ -48,10 +46,10 @@ class Service extends NodesModel
     const TYPE_CLIENT = 'client';
 
     /**
-     * isServer
+     * isServer.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @return bool
      */
     public function isServer() : bool
@@ -60,10 +58,10 @@ class Service extends NodesModel
     }
 
     /**
-     * isClient
+     * isClient.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @return bool
      */
     public function isClient() : bool
@@ -72,12 +70,13 @@ class Service extends NodesModel
     }
 
     /**
-     * guardClient
+     * guardClient.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
-     * @return void
+     *
      * @throws \Nodes\ServiceAuthenticator\Exceptions\ServiceIsNotClientException
+     *
+     * @return void
      */
     public function guardClient()
     {
@@ -87,10 +86,10 @@ class Service extends NodesModel
     }
 
     /**
-     * refresh
+     * refresh.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @return void
      */
     public function refresh()

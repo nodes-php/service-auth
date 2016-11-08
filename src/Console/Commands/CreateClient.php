@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Nodes\ServiceAuthenticator\Console\Commands;
 
@@ -34,10 +35,10 @@ class CreateClient extends Command
     }
 
     /**
-     * askForBaseUrl
+     * askForBaseUrl.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @return string
      */
     private function askForBaseUrl() : string

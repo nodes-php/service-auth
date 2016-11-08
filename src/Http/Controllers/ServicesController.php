@@ -10,20 +10,20 @@ use Nodes\ServiceAuthenticator\Models\Services\Service;
 use Nodes\ServiceAuthenticator\Models\Services\ServiceRepository;
 
 /**
- * Class ServicesController
- *
- * @package Nodes\ServiceAuthenticator\Http\Controllers
+ * Class ServicesController.
  */
 class ServicesController extends Controller
 {
     /**
-     * refresh
+     * refresh.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @param \Nodes\ServiceAuthenticator\Models\Services\ServiceRepository $serviceRepository
-     * @return \Illuminate\Http\JsonResponse
+     *
      * @throws \Nodes\Exceptions\Exception
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function refresh(ServiceRepository $serviceRepository) : JsonResponse
     {

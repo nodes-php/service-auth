@@ -6,17 +6,15 @@ use Nodes\Exceptions\Exception;
 use Nodes\ServiceAuthenticator\Models\Services\Service;
 
 /**
- * Class ServiceIsNotClientException
- *
- * @package Nodes\ServiceAuthenticator\Exceptions
+ * Class ServiceIsNotClientException.
  */
 class ServiceIsNotClientException extends Exception
 {
     /**
-     * ServiceIsNotClientException constructor
+     * ServiceIsNotClientException constructor.
      *
      * @author Casper Rasmussen <cr@nodes.dk>
-     * @access public
+     *
      * @param \Nodes\ServiceAuthenticator\Models\Services\Service $service
      */
     public function __construct(Service $service)
